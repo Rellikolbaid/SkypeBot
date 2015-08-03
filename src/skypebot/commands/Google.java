@@ -1,4 +1,4 @@
-package skypebot;
+package skypebot.commands;
 
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;

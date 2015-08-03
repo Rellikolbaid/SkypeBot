@@ -1,20 +1,16 @@
 package skypebot;
 
-//import com.skype.*;
-
-import com.skype.*;
+import skypebot.commands.Command;
+import com.skype.Chat;
+import com.skype.ChatMessage;
+import com.skype.ChatMessageListener;
+import com.skype.SkypeException;
 
 public class GroupChatListener implements ChatMessageListener {
-    private int numMembers = 0;
     private final Chat group;
     
     public GroupChatListener(Chat group) {
         this.group = group;
-        
-        try {
-            numMembers = group.getAllMembers().length;
-        } catch (SkypeException e) {
-        }
     }
 
     /**
@@ -26,6 +22,10 @@ public class GroupChatListener implements ChatMessageListener {
     public void chatMessageReceived(ChatMessage received) throws SkypeException {
         Command command = new Command(received, group);
         command.handleCommands();
+        //TODO: Move this to it's own class
+        if (received.getContent().contains("trigger")) {
+            group.send("[[TRIGGER WARNING]] " + received.getSenderDisplayName().toUpperCase() + " IS TRIGGERED!!!");
+        }
     }
 
     /**
@@ -37,6 +37,10 @@ public class GroupChatListener implements ChatMessageListener {
     public void chatMessageSent(ChatMessage sent) throws SkypeException {
         Command command = new Command(sent, group);
         command.handleCommands();
+            //TODO: Move this to it's own class
+        if (sent.getContent().contains("trigger")) {
+            group.send("[[TRIGGER WARNING]] " + sent.getSenderDisplayName().toUpperCase() + " IS TRIGGERED!!!");
+        }
     }
     
 }

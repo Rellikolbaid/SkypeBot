@@ -13,8 +13,7 @@ public class SkypeBot {
     public static final String version = "SkypeBot Beta v0.3";
 
     public static void main(String[] args) throws SkypeException {
-        SkypeGroup skypeGroup = new SkypeGroup();
-        Chat group = skypeGroup.getBookmarked();
+        Chat group = getGroup();
         
         Skype.addChatMessageListener(new GroupChatListener(group));
 
@@ -24,6 +23,12 @@ public class SkypeBot {
 
         SkypeBotGUI gui = new SkypeBotGUI();
         gui.run();
+    }
+    
+    public static  Chat getGroup() {
+        SkypeGroup sg = new SkypeGroup();
+        Chat group = sg.getBookmarked();
+        return group;
     }
     
 }
