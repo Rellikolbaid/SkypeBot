@@ -28,18 +28,22 @@ public class Google {
         int count = 0;
         for (Element link : links) {
             count++;
-            // limit search from going beyond 5 results.
-            if (count > 5) {
+            // limit search from going beyond 4 results.
+            if (count > 4) {
                 break;
             }
             
             String title = link.text();
             String url = link.absUrl("href"); // Google returns URLs in format "http://www.google.com/url?q=<url>&sa=U&ei=<someKey>".
             url = URLDecoder.decode(url.substring(url.indexOf('=') + 1, url.indexOf('&')), "UTF-8");
-            
+
+            // This block filters some unwanted urls
             if (!url.startsWith("http")) {
-                continue; // Ads/news/etc.
+                continue;
+            } else if (!url.contains(".")) {
+                continue; 
             }
+            
             
             try {
                 group.send(title);
