@@ -17,7 +17,7 @@ public class Command {
     private String foundCommand;
     // Defines list of recognizable commands
     private static final String[] commandList = {
-        "!lewd", "!commands", "!roll", "!cointoss", "!google"};
+        "!commands", "!roll", "!cointoss", "!google"};
     
     public Command(ChatMessage received, Chat group) throws SkypeException  {
         this.received = received;
@@ -32,10 +32,7 @@ public class Command {
     
     public void handleCommands() throws SkypeException {
         if (inString()) {
-            if (foundCommand.equals("!lewd")) {
-                group.send("SkypeBot: http://i2.kym-cdn.com/entries/icons/original/000/017/225/zAp2LzJ.jpg");
-                
-            } else if (foundCommand.equals("!commands")) {
+            if (foundCommand.equals("!commands")) {
                 for (String command : commandList) {
                     group.send("-" + command+ "-");
                 }
