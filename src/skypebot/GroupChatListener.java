@@ -35,8 +35,8 @@ public class GroupChatListener implements ChatMessageListener {
      */
     @Override
     public void chatMessageSent(ChatMessage sent) throws SkypeException {
-        if (!sent.getChat().equals(group))
-            return;
+        Command command = new Command(sent, group);
+        command.handleCommands();
     }
     
 }
