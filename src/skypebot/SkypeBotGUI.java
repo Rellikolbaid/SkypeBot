@@ -22,7 +22,7 @@ public class SkypeBotGUI extends javax.swing.JFrame {
         runningLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SkypeBot Beta v0.2");
+        setTitle(SkypeBot.version);
 
         runningLabel.setText("SkypeBot Running");
 

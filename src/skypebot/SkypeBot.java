@@ -9,6 +9,8 @@ import com.skype.Chat;
 import com.skype.Skype;
 
 public class SkypeBot {
+    
+    public static final String version = "SkypeBot Beta v0.3";
 
     public static void main(String[] args) throws SkypeException {
         SkypeGroup skypeGroup = new SkypeGroup();
@@ -18,7 +20,7 @@ public class SkypeBot {
 
         Skype.setDaemon(false);
 
-        group.send(" === SKYPEBOT BETA v0.2 ====");
+        group.send(" === "+ version + "  ====");
         group.send("=== Author: Rellikolbaid ===");
         group.send("=== apolywka@gmail.com ===");
 
