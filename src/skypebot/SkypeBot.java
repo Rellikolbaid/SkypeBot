@@ -21,8 +21,6 @@ public class SkypeBot {
         Skype.setDaemon(false);
 
         group.send(" === "+ version + "  ====");
-        group.send("=== Author: Rellikolbaid ===");
-        group.send("=== apolywka@gmail.com ===");
 
         SkypeBotGUI gui = new SkypeBotGUI();
         gui.run();
