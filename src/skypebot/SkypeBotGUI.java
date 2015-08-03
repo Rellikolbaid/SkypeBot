@@ -1,5 +1,7 @@
 package skypebot;
 
+import com.skype.Chat;
+import com.skype.SkypeException;
 
 public class SkypeBotGUI extends javax.swing.JFrame {
 
@@ -20,11 +22,19 @@ public class SkypeBotGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         runningLabel = new javax.swing.JLabel();
+        shutdownButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(SkypeBot.version);
 
         runningLabel.setText("SkypeBot Running");
+
+        shutdownButton.setText("Shutdown");
+        shutdownButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shutdownButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -32,16 +42,34 @@ public class SkypeBotGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(runningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(shutdownButton))
+                    .addComponent(runningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(runningLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(runningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(shutdownButton))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void shutdownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutdownButtonActionPerformed
+        SkypeGroup sg = new SkypeGroup();
+        Chat group = sg.getBookmarked();
+        try {
+        group.send("=== SkypeBot shutting down. ===");
+        } catch (SkypeException e) {
+        }
+        System.exit(0);
+        
+    }//GEN-LAST:event_shutdownButtonActionPerformed
 
 
     public void run() {
@@ -51,5 +79,6 @@ public class SkypeBotGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel runningLabel;
+    private javax.swing.JButton shutdownButton;
     // End of variables declaration//GEN-END:variables
 }

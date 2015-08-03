@@ -20,7 +20,7 @@ public class SkypeBot {
 
         Skype.setDaemon(false);
 
-        group.send(" === "+ version + "  ====");
+        group.send(" === "+ version + "  ===");
 
         SkypeBotGUI gui = new SkypeBotGUI();
         gui.run();
