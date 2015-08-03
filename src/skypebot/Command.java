@@ -37,7 +37,7 @@ public class Command {
                 
             } else if (foundCommand.equals("!commands")) {
                 for (String command : commandList) {
-                    group.send(command);
+                    group.send("-" + command+ "-");
                 }
                 
             } else if (foundCommand.equals("!roll")) {
