@@ -30,6 +30,7 @@ public class SkypeBotGUI extends javax.swing.JFrame {
         runningLabel.setText("SkypeBot Running");
 
         shutdownButton.setText("Shut Down");
+        shutdownButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         shutdownButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shutdownButtonActionPerformed(evt);
@@ -74,6 +75,7 @@ public class SkypeBotGUI extends javax.swing.JFrame {
     public void run() {
         new SkypeBotGUI().setVisible(true);
     }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
