@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/Command.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/commands/YouTube.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/GroupChatListener.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/SkypeBotGUI.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/Google.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/commands/Google.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/ChatResponse.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/SkypeGroup.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/SkypeBot.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/SkypeBot/src/skypebot/commands/Command.java</file>
         </group>
     </open-files>
 </project-private>

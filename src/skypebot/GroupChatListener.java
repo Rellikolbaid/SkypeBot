@@ -23,9 +23,8 @@ public class GroupChatListener implements ChatMessageListener {
         Command command = new Command(received, group);
         command.handleCommands();
         //TODO: Move this to it's own class
-        if (received.getContent().contains("trigger")) {
-            group.send("[[TRIGGER WARNING]] " + received.getSenderDisplayName().toUpperCase() + " IS TRIGGERED!!!");
-        }
+        ChatResponse cr = new ChatResponse(received, group);
+        cr.handleResponse();
     }
 
     /**
@@ -37,10 +36,9 @@ public class GroupChatListener implements ChatMessageListener {
     public void chatMessageSent(ChatMessage sent) throws SkypeException {
         Command command = new Command(sent, group);
         command.handleCommands();
-            //TODO: Move this to it's own class
-        if (sent.getContent().contains("trigger")) {
-            group.send("[[TRIGGER WARNING]] " + sent.getSenderDisplayName().toUpperCase() + " IS TRIGGERED!!!");
-        }
+        
+        ChatResponse cr = new ChatResponse(sent, group); 
+        cr.handleResponse();
     }
     
 }
