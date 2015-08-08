@@ -18,7 +18,7 @@ public class Command {
     private String foundCommand;
     // Defines list of recognizable commands
     private static final String[] commandList = {
-        "!commands", "!roll", "!cointoss", "!google"};
+        "!commands", "!roll", "!cointoss", "!google", "!youtube"};
     
     public Command(ChatMessage received, Chat group) throws SkypeException  {
         this.received = received;
@@ -57,17 +57,31 @@ public class Command {
                         break;
                     }
                 case "!google":
-                    // Cuts the "!google" out of the string so its not in the search.
-                    String search = input.substring(7);;
-                    Google google = new Google();
-                    // Makes sure !google is the first thing in the string to avoid problems.
-                    if (foundCommand.equals(inputArray[0]))
-                        try {
-                            google.search(search, group);
-                        } catch (UnsupportedEncodingException e) {
-                        } catch (IOException e) {
+                    {
+                        // Cuts the "!google" out of the string so its not in the search.
+                        String search = input.substring(7);
+                        Google google = new Google();
+                        // Makes sure !google is the first thing in the string to avoid problems.
+                        if (foundCommand.equals(inputArray[0]))
+                            try {
+                                google.search(search, group);
+                            } catch (UnsupportedEncodingException e) {
+                            } catch (IOException e) {
+                        }
+                        break;
                     }
-                    break;
+                case "!youtube":
+                    {
+                        String search = input.substring(9);
+                        YouTube yt = new YouTube();
+                        if (foundCommand.equals(inputArray[0])) {
+                            try {
+                                yt.search(search, group);
+                            } catch (UnsupportedEncodingException e) {
+                            } catch (IOException e) {
+                            }
+                        }
+                    }
             }
         }
     }

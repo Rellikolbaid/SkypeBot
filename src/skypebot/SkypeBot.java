@@ -10,7 +10,7 @@ import com.skype.Skype;
 
 public class SkypeBot {
     
-    public static final String version = "SkypeBot Beta v0.3";
+    public static final String version = "SkypeBot Beta v0.4";
 
     public static void main(String[] args) throws SkypeException {
         Chat group = getGroup();
