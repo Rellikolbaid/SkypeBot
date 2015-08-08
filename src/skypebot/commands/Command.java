@@ -7,7 +7,6 @@ import com.skype.SkypeException;
 import java.util.Random;
 import java.io.UnsupportedEncodingException;
 import java.io.IOException;
-import skypebot.commands.Google;
 
 public class Command {
     private final Chat group;

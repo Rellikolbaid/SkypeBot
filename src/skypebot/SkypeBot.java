@@ -13,22 +13,14 @@ public class SkypeBot {
     public static final String version = "SkypeBot Beta v0.4";
 
     public static void main(String[] args) throws SkypeException {
-        Chat group = getGroup();
+        SkypeGroup sg = new SkypeGroup();
+        Chat group = sg.getGroup();
         
         Skype.addChatMessageListener(new GroupChatListener(group));
-
-        Skype.setDaemon(false);
 
         group.send(" === "+ version + "  ===");
 
         SkypeBotGUI gui = new SkypeBotGUI();
         gui.run();
     }
-    
-    public static  Chat getGroup() {
-        SkypeGroup sg = new SkypeGroup();
-        Chat group = sg.getBookmarked();
-        return group;
-    }
-    
 }
