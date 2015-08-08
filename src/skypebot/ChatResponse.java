@@ -14,10 +14,10 @@ public class ChatResponse {
     String inputString;
     Chat group;
     
-    public ChatResponse(ChatMessage cm, Chat group) throws SkypeException {
+    public ChatResponse(ChatMessage cm, Chat g) throws SkypeException {
         input = cm;
         inputString = cm.getContent();
-        group = group;
+        group = g;
     }
     
     public void handleResponse() throws SkypeException {

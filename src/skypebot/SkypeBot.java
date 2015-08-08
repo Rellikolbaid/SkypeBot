@@ -17,6 +17,8 @@ public class SkypeBot {
         Chat group = sg.getGroup();
         
         Skype.addChatMessageListener(new GroupChatListener(group));
+        
+        Skype.setDaemon(false);
 
         group.send(" === "+ version + "  ===");
 
