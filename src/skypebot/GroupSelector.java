@@ -5,7 +5,7 @@ import com.skype.SkypeException;
 import com.skype.Skype;
 
 
-public class SkypeGroup {
+public class GroupSelector {
     
     // Retrieves list of favorited conversations. 
     private Chat getBookmarked() {

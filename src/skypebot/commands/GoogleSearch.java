@@ -1,6 +1,5 @@
 package skypebot.commands;
 
-
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.jsoup.nodes.Element;
@@ -12,41 +11,49 @@ import com.skype.Chat;
 import com.skype.SkypeException;
 
 
-public class YouTube {
-    private static final String youtube = "http://www.youtube.com/results?search_query=";
+public class GoogleSearch {
+    private static final String google = "http://www.google.com/search?q=";
     String search;
     String charset = "UTF-8";
     String userAgent = "SkypeBot";
+    
     /**
-     * Hacked together youtube search crawler
      * @param search
      * @param group
      * @throws UnsupportedEncodingException
      * @throws IOException 
      */
     public void search(String search, Chat group) throws UnsupportedEncodingException, IOException {
-        String selection = "div#results>ol>li>ol>li>div>div>div.yt-lockup-content>h3>a"; // For jsoup selector
-        Elements links = Jsoup.connect(youtube + URLEncoder.encode(search, charset)).userAgent(userAgent).get().select(selection);
-        
+        Elements links = Jsoup.connect(google + URLEncoder.encode(search, charset)).userAgent(userAgent).get().select("li.g>h3>a");
         int count = 0;
         for (Element link : links) {
             count++;
-            // limit search from going beyond 4 results
+            // limit search from going beyond 4 results.
             if (count > 4) {
                 break;
             }
-
+            
             String title = link.text();
-            // Builds URL using youtube video ID 
-            String url = "Http://youtube.com/watch?v=" + link.absUrl("href");
-            url = URLDecoder.decode(url.substring(url.indexOf('=') + 1), "UTF-8");
+            String url = link.absUrl("href"); // GoogleSearch returns URLs in format "http://www.google.com/url?q=<url>&sa=U&ei=<someKey>".
+            url = URLDecoder.decode(url.substring(url.indexOf('=') + 1, url.indexOf('&')), "UTF-8");
+
+            // This block filters some unwanted urls
+            if (!url.startsWith("http")) {
+                continue;
+            } else if (!url.contains(".")) {
+                continue; 
+            }
+            
             
             try {
                 group.send(title);
                 group.send(url);
             } catch (SkypeException e) {
             }
-
         }
+            
     }
+    
+    
+    
 }

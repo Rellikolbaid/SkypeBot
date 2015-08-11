@@ -61,7 +61,7 @@ public class SkypeBotGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void shutdownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutdownButtonActionPerformed
-        SkypeGroup sg = new SkypeGroup();
+        GroupSelector sg = new GroupSelector();
         Chat group = sg.getGroup();
         try {
         group.send("=== SkypeBot shutting down. ===");

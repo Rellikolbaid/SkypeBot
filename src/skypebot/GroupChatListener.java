@@ -1,6 +1,6 @@
 package skypebot;
 
-import skypebot.commands.Command;
+import skypebot.commands.CommandExecutor;
 import com.skype.Chat;
 import com.skype.ChatMessage;
 import com.skype.ChatMessageListener;
@@ -20,7 +20,7 @@ public class GroupChatListener implements ChatMessageListener {
      */
     @Override
     public void chatMessageReceived(ChatMessage received) throws SkypeException {
-        Command command = new Command(received, group);
+        CommandExecutor command = new CommandExecutor(received, group);
         command.handleCommands();
         //TODO: Move this to it's own class
         ChatResponse cr = new ChatResponse(received, group);
@@ -34,7 +34,7 @@ public class GroupChatListener implements ChatMessageListener {
      */
     @Override
     public void chatMessageSent(ChatMessage sent) throws SkypeException {
-        Command command = new Command(sent, group);
+        CommandExecutor command = new CommandExecutor(sent, group);
         command.handleCommands();
         
         ChatResponse cr = new ChatResponse(sent, group); 

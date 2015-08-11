@@ -8,7 +8,7 @@ import java.util.Random;
 import java.io.UnsupportedEncodingException;
 import java.io.IOException;
 
-public class Command {
+public class CommandExecutor {
     private final Chat group;
     private final String input;
     private final String[] inputArray;
@@ -19,7 +19,7 @@ public class Command {
     private static final String[] commandList = {
         "!commands", "!roll", "!cointoss", "!google", "!youtube"};
     
-    public Command(ChatMessage received, Chat group) throws SkypeException  {
+    public CommandExecutor(ChatMessage received, Chat group) throws SkypeException  {
         this.received = received;
         this.group = group;
         // Converts received chat message into string.
@@ -59,7 +59,7 @@ public class Command {
                     {
                         // Cuts the "!google" out of the string so its not in the search.
                         String search = input.substring(7);
-                        Google google = new Google();
+                        GoogleSearch google = new GoogleSearch();
                         // Makes sure !google is the first thing in the string to avoid problems.
                         if (foundCommand.equals(inputArray[0]))
                             try {
@@ -72,7 +72,7 @@ public class Command {
                 case "!youtube":
                     {
                         String search = input.substring(9);
-                        YouTube yt = new YouTube();
+                        YouTubeSearch yt = new YouTubeSearch();
                         if (foundCommand.equals(inputArray[0])) {
                             try {
                                 yt.search(search, group);
